@@ -346,5 +346,60 @@ class CompanyValuation(FinancialModelingAPI):
 
 
 
+class StockMarket(FinancialModelingAPI):
+
+    def __init__(self):
+        #self.base_url = "https://financialmodelingprep.com/api/v3/"
+        FinancialModelingAPI.__init__(self)
+
+
+    def most_active_stock(self):
+        """
+        Returns the most active stock companies, updated daily
+        """
+        endpoint = "actives"
+        
+        params = {
+            "apikey": self.API_KEY['apikey']
+            } 
+
+        response = requests.get(self.base_url + endpoint, params=params)
+        response = json.loads(response.text)
+        
+        return response
+
+    def most_gainer_stock(self):
+
+        """
+        Returns the most gaining stock companies, updated daily
+        """
+        endpoint = "gainers"
+        
+        params = {
+            "apikey": self.API_KEY['apikey']
+            } 
+
+        response = requests.get(self.base_url + endpoint, params=params)
+        response = json.loads(response.text)
+        
+        return response   
+
+
+    def most_loser_stock(self):
+        """
+        Returns the most losing stock companies, updated daily
+        """
+        endpoint = "losers"
+        
+        params = {
+            "apikey": self.API_KEY['apikey']
+            } 
+
+        response = requests.get(self.base_url + endpoint, params=params)
+        response = json.loads(response.text)
+        
+        return response   
+
+
 if __name__ == '__main__':
     FinancialModelingAPI().get_api_key()

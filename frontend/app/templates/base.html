@@ -3,16 +3,16 @@
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         {% if title %}
-        <title>{{ title }} - microblog</title>
+        <title>{{ title }} - Midnight Analytics</title>
         {% else %}
-        <title>microblog</title>
+        <title>Midnight Analytics</title>
         {% endif %}
         
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Midnight Analytics</a>
+              <a class="navbar-brand" href="{{ url_for('index') }}">Midnight Analytics</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -24,6 +24,13 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('login') }}">Login</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('upcoming_ipo') }}">Upcoming IPO</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('company_profile') }}">Company Profile</a>
+                  </li>
+
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Dropdown
@@ -46,11 +53,6 @@
               </div>
             </div>
           </nav>
-        <div>
-            Microblog:
-            <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('login') }}">Login</a>
-        </div>
         <hr>
         {% with messages = get_flashed_messages() %}
         {% if messages %}

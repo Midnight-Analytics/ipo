@@ -2,8 +2,69 @@
 
 
 {% block content %}
-    <h1>Hi, {{ user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+
+
+
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+            {% for header in active_head %}
+            <th scope="col">{{ header }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for data in active %}
+            <tr>
+            {% for header in active_head %}
+                <td>{{ data[header] }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </hr>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+            {% for header in gainers_head %}
+            <th scope="col">{{ header }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for data in gainers %}
+            <tr>
+            {% for header in gainers_head %}
+                <td>{{ data[header] }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    <hr>
+
+    <table class="table">
+        <thead>
+            <tr>
+            {% for header in losers_head %}
+            <th scope="col">{{ header }}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for data in losers %}
+            <tr>
+            {% for header in losers_head %}
+                <td>{{ data[header] }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

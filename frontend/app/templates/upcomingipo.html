@@ -2,8 +2,39 @@
 
 
 {% block content %}
-    <h1>Hi, {{ user.username }}!</h1>
-    
+ 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">date</th>
+            <th scope="col">company</th>
+            <th scope="col">symbol</th>
+            <th scope="col">exchange</th>
+            <th scope="col">actions</th>
+            <th scope="col">shares</th>
+            <th scope="col">price range</th>
+            <th scope="col">market cap</th>
 
-    
+          </tr>
+        </thead>
+        <tbody>
+          {% set count = 1 %}
+          {% for data in data %}
+          <tr>
+
+            <td>{{ data.date }}</td>
+            <td>{{ data.company }}</td>
+            <td>{{ data.symbol }}</td>
+            <td>{{ data.exchange }}</td>
+            <td>{{ data.actions }}</td>
+            <td>{{ data.shares }}</td>
+            <td>{{ data.priceRange }}</td>
+            <td>{{ data.marketCap }}</td>
+          </tr>
+          {% set count = count + 1 %}
+          {% endfor %}          
+        </tbody>
+      </table>
+      
+
 {% endblock %}
