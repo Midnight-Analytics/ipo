@@ -1,4 +1,4 @@
-from FinancialMod=delingPrep import CompanyValuation, Calendars
+from FinancialModelingPrep import CompanyValuation, Calendars
 from datetime import datetime, timedelta
 import pandas as pd
 import json
