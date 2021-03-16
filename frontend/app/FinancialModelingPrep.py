@@ -394,7 +394,7 @@ class StockMarket(FinancialModelingAPI):
         params = {
             "apikey": self.API_KEY['apikey']
             } 
-
+            
         response = requests.get(self.base_url + endpoint, params=params)
         response = json.loads(response.text)
         

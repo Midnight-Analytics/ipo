@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, request
 from app import app
 from app.forms import LoginForm
 from app.FinancialModelingPrep import Calendars, CompanyValuation, StockMarket
@@ -34,12 +34,13 @@ def login():
 def upcoming_ipo():
     user = {'username': 'Lorum1'}
     session = Calendars()
-    data = session.ipo_calendar('2021-03-10', '2021-03-30')
+    data = session.ipo_calendar('2021-03-15', '2021-04-15')
 
     return render_template('upcomingipo.html', title='Upcoming IPO', user=user, data=data)
 
 
-@app.route('/company/<symbol>', defaults={'symbol': 'AAPL'}, methods=['GET'])
+@app.route('/company', defaults={'symbol': 'AAPL'})
+@app.route('/company/<symbol>')
 def company_profile(symbol):
 
     session = CompanyValuation()
